@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight Homes — Premium Living in BSD City</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        ::selection { background: #ffedd5; color: #7c2d12; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fafaf9; }
+        ::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .animate-slide-in { animation: slideIn 0.6s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.5s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+
+        .property-card:hover .property-img {
+            transform: scale(1.08);
+        }
+        .property-card:hover {
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .hero-parallax {
+            background-attachment: fixed;
+        }
+        @media (max-width: 768px) {
+            .hero-parallax { background-attachment: scroll; }
+        }
+        .badge-sold {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+        }
+        .badge-available {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+        }
+        .nav-scrolled {
+            background: rgb(250 250 249 / 0.95) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        }
+        .instagram-grid-item:hover .ig-overlay {
+            opacity: 1;
+        }
+        .instagram-grid-item:hover img {
+            transform: scale(1.05);
+        }
+        .stat-counter {
+            background: linear-gradient(135deg, #1c1917, #292524);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 bg-stone-900 rounded-xl flex items-center justify-center group-hover:bg-stone-800 transition-colors duration-150">
+                    <i data-lucide="home" class="w-4 h-4 text-white" style="stroke-width:2.5"></i>
+                </div>
+                <span class="text-lg font-semibold tracking-tight text-stone-900">Insight<span class="text-orange-700">Homes</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#listings" class="text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors duration-150">Listing</a>
+                <a href="#about" class="text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors duration-150">Tentang Kami</a>
+                <a href="#gallery" class="text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors duration-150">Galeri</a>
+                <a href="#contact" class="text-sm font-medium text-stone-500 hover:text-stone-900 transition-colors duration-150">Kontak</a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-800 transition-colors duration-150 shadow-lg shadow-stone-900/10">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                    Follow Kami
+                </a>
+            </div>
+            <button id="mobileMenuBtn" class="md:hidden p-2 rounded-full hover:bg-stone-100 transition-colors">
+                <i data-lucide="menu" class="w-5 h-5 text-stone-700"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-stone-200/50">
+            <div class="px-6 py-4 flex flex-col gap-3">
+                <a href="#listings" class="text-sm font-medium text-stone-600 py-2">Listing</a>
+                <a href="#about" class="text-sm font-medium text-stone-600 py-2">Tentang Kami</a>
+                <a href="#gallery" class="text-sm font-medium text-stone-600 py-2">Galeri</a>
+                <a href="#contact" class="text-sm font-medium text-stone-600 py-2">Kontak</a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="inline-flex items-center justify-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full mt-2">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                    Follow Kami
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="https://picsum.photos/seed/insighthome-hero/1920/1080.jpg" alt="Modern Home" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-900/80 via-stone-900/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent"></div>
+        </div>
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-20 w-72 h-72 bg-orange-700/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-48 h-48 bg-orange-700/5 rounded-full blur-3xl"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-32 w-full">
+            <div class="max-w-2xl">
+                <div class="animate-fade-up opacity-0">
+                    <span class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 text-xs font-medium tracking-wider uppercase px-4 py-2 rounded-full border border-white/10 mb-8">
+                        <span class="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse"></span>
+                        Premium Property BSD City
+                    </span>
+                </div>
+                <h1 class="animate-fade-up opacity-0 delay-100 text-4xl md:text-6xl lg:text-7xl font-semibold text-white tracking-tight leading-[1.1] mb-6">
+                    Temukan Hunian<br>
+                    <span class="text-orange-400">Impian</span> Anda
+                </h1>
+                <p class="animate-fade-up opacity-0 delay-200 text-lg text-white/70 leading-relaxed mb-10 max-w-lg">
+                    Insight Homes membantu Anda menemukan properti terbaik di kawasan BSD City. Rumah modern, lokasi strategis, dan investasi yang cerdas.
+                </p>
+                <div class="animate-fade-up opacity-0 delay-300 flex flex-wrap gap-4">
+                    <a href="#listings" class="inline-flex items-center gap-2 bg-white text-stone-900 text-sm font-medium px-8 py-3.5 rounded-full hover:bg-stone-100 transition-colors duration-150 shadow-lg">
+                        Lihat Listing
+                        <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://wa.me/6282125006251" target="_blank" class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white text-sm font-medium px-8 py-3.5 rounded-full hover:bg-white/20 transition-colors duration-150 border border-white/10">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        WhatsApp Kami
+                    </a>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="animate-fade-up opacity-0 delay-400 mt-16 md:mt-24 grid grid-cols-3 gap-6 max-w-md">
+                <div>
+                    <p class="text-2xl md:text-3xl font-semibold text-white">50+</p>
+                    <p class="text-xs text-white/50 mt-1">Unit Terjual</p>
+                </div>
+                <div>
+                    <p class="text-2xl md:text-3xl font-semibold text-white">15+</p>
+                    <p class="text-xs text-white/50 mt-1">Cluster BSD</p>
+                </div>
+                <div>
+                    <p class="text-2xl md:text-3xl font-semibold text-white">5★</p>
+                    <p class="text-xs text-white/50 mt-1">Rating Klien</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <div class="w-8 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+                <div class="w-1 h-2 bg-white/60 rounded-full"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By / Location Badge -->
+    <section class="bg-white border-b border-stone-200/50">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-orange-700"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-stone-900">BSD City, Tangerang Selatan</p>
+                    <p class="text-xs text-stone-400">Kawasan hunian terbaik di Indonesia</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 text-xs text-stone-400">
+                <span class="hidden sm:inline">Dekat AEON Mall</span>
+                <span class="hidden sm:inline w-1 h-1 bg-stone-300 rounded-full"></span>
+                <span class="hidden sm:inline">Dekat ICE BSD</span>
+                <span class="hidden sm:inline w-1 h-1 bg-stone-300 rounded-full"></span>
+                <span class="hidden sm:inline">Akses Tol</span>
+                <span class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full font-medium">
+                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                    Listing Update
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Listings -->
+    <section id="listings" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <span class="inline-block text-xs font-medium tracking-wider uppercase text-orange-700 mb-3">Listing Terbaru</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Hunian Tersedia Saat Ini</h2>
+                    <p class="text-stone-500 mt-3 max-w-lg">Pilihan rumah terbaik di berbagai cluster BSD City. Setiap properti telah kami verifikasi dan dokumentasikan secara lengkap.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="filterProperties('all')" class="filter-btn active-filter px-4 py-2 text-sm font-medium rounded-full border border-stone-200 bg-stone-900 text-white transition-all duration-150" data-filter="all">Semua</button>
+                    <button onclick="filterProperties('available')" class="filter-btn px-4 py-2 text-sm font-medium rounded-full border border-stone-200 text-stone-600 hover:bg-stone-50 transition-all duration-150" data-filter="available">Tersedia</button>
+                    <button onclick="filterProperties('sold')" class="filter-btn px-4 py-2 text-sm font-medium rounded-full border border-stone-200 text-stone-600 hover:bg-stone-50 transition-all duration-150" data-filter="sold">Terjual</button>
+                </div>
+            </div>
+
+            <!-- Property Grid -->
+            <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Property 1 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="sold" onclick="openModal(0)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-alam-sutra-1/800/600.jpg" alt="Rumah Cluster Vanya Park" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-sold text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERJUAL</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Cluster Vanya Park</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Modern 2 Lantai</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 3+1 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 2+1 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 90 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 84 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 2.1<span class="text-sm text-stone-400 font-normal">M</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="available" onclick="openModal(1)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-rumah-modern-2/800/600.jpg" alt="Rumah The Green" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-available text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERSEDIA</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Cluster The Green</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Hook Semi Furnished</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 4+1 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 3+1 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 160 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 200 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 4.5<span class="text-sm text-stone-400 font-normal">M</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="sold" onclick="openModal(2)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-cluster-3/800/600.jpg" alt="Rumah Casablanca" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-sold text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERJUAL</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Cluster Casablanca</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Baru Siap Huni</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 2 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 1 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 45 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 60 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 1.2<span class="text-sm text-stone-400 font-normal">M</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="available" onclick="openModal(3)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-premium-house/800/600.jpg" alt="Rumah De Park" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-available text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERSEDIA</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Cluster De Park</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Premium Full Renov</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 4 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 3 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 200 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 180 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 5.8<span class="text-sm text-stone-400 font-normal">M</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="available" onclick="openModal(4)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-minimalis-5/800/600.jpg" alt="Rumah Serpong Garden" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-available text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERSEDIA</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Serpong Garden</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Minimalis 1 Lantai</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 2 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 1 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 36 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 72 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 850<span class="text-sm text-stone-400 font-normal">Jt</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="property-card group bg-white rounded-2xl border border-stone-200/60 overflow-hidden transition-all duration-300 cursor-pointer" data-status="sold" onclick="openModal(5)">
+                    <div class="relative aspect-[4/3] overflow-hidden">
+                        <img src="https://picsum.photos/seed/bsd-luxury-6/800/600.jpg" alt="Rumah Foresta" class="property-img w-full h-full object-cover transition-transform duration-500 ease-out">
+                        <div class="absolute top-4 left-4">
+                            <span class="badge-sold text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERJUAL</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <button onclick="event.stopPropagation(); toggleFavorite(this)" class="w-9 h-9 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm">
+                                <i data-lucide="heart" class="w-4 h-4 text-stone-400"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                            <p class="text-white text-sm font-medium">Cluster Foresta</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone-400"></i>
+                            <p class="text-xs text-stone-400">BSD City, Tangerang Selatan</p>
+                        </div>
+                        <h3 class="text-lg font-semibold text-stone-900 tracking-tight mb-3">Rumah Mewah 3 Lantai</h3>
+                        <div class="flex items-center gap-4 mb-4 text-xs text-stone-500">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bed-double" class="w-3.5 h-3.5"></i> 5+1 KT
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="bath" class="w-3.5 h-3.5"></i> 4+1 KM
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="maximize" class="w-3.5 h-3.5"></i> 350 m²
+                            </span>
+                            <span class="inline-flex items-center gap-1.5">
+                                <i data-lucide="layers" class="w-3.5 h-3.5"></i> LT 300 m²
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
+                            <p class="text-lg font-semibold text-stone-900">Rp 9.5<span class="text-sm text-stone-400 font-normal">M</span></p>
+                            <span class="inline-flex items-center gap-1 text-xs text-orange-700 font-medium group-hover:gap-2 transition-all duration-150">
+                                Detail <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-12">
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="inline-flex items-center gap-2 border border-stone-200 text-stone-700 text-sm font-medium px-8 py-3.5 rounded-full hover:bg-stone-50 hover:border-stone-300 transition-all duration-150">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                    Lihat Lebih Banyak di Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden">
+                        <img src="https://picsum.photos/seed/insight-team-photo/800/1000.jpg" alt="Insight Homes Team" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-6 -right-6 md:right-6 bg-white rounded-2xl shadow-xl border border-stone-100 p-6 max-w-[240px]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 bg-orange-50 rounded-xl flex items-center justify-center">
+                                <i data-lucide="trophy" class="w-5 h-5 text-orange-700"></i>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-semibold text-stone-900">50+</p>
+                                <p class="text-xs text-stone-400">Transaksi Sukses</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-stone-500 leading-relaxed">Dipercaya ratusan klien untuk transaksi properti di BSD City</p>
+                    </div>
+                </div>
+                <div>
+                    <span class="inline-block text-xs font-medium tracking-wider uppercase text-orange-700 mb-3">Tentang Kami</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900 mb-6">Mengapa Memilih<br>Insight Homes?</h2>
+                    <p class="text-stone-500 leading-relaxed mb-8">
+                        Insight Homes adalah mitra properti terpercaya yang berfokus pada penjualan rumah di kawasan BSD City. Kami tidak hanya menjual rumah — kami membantu Anda menemukan hunian yang tepat untuk keluarga dan investasi masa depan Anda.
+                    </p>
+                    <div class="space-y-5">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-stone-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="search" class="w-5 h-5 text-stone-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-stone-900 mb-1">Penelitian Mendalam</h4>
+                                <p class="text-sm text-stone-500 leading-relaxed">Setiap properti kami verifikasi langsung — dari legalitas, kondisi fisik, hingga potensi investasi.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-stone-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="camera" class="w-5 h-5 text-stone-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-stone-900 mb-1">Dokumentasi Profesional</h4>
+                                <p class="text-sm text-stone-500 leading-relaxed">Foto dan video berkualitas tinggi setiap listing agar Anda bisa mengevaluasi sebelum survei.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 bg-stone-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="handshake" class="w-5 h-5 text-stone-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-stone-900 mb-1">Pendampingan Penuh</h4>
+                                <p class="text-sm text-stone-500 leading-relaxed">Dari proses pencarian, negosiasi, hingga serah terima kunci — kami bersama Anda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Gallery -->
+    <section id="gallery" class="py-24 px-6 bg-stone-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block text-xs font-medium tracking-wider uppercase text-orange-700 mb-3">@insighthomes.bsd</span>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900 mb-4">Galeri Instagram</h2>
+                <p class="text-stone-500 max-w-md mx-auto">Ikuti kami di Instagram untuk update listing terbaru dan inspirasi hunian BSD City.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group">
+                    <img src="https://picsum.photos/seed/ig-insight-1/600/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group">
+                    <img src="https://picsum.photos/seed/ig-insight-2/600/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group">
+                    <img src="https://picsum.photos/seed/ig-insight-3/600/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group">
+                    <img src="https://picsum.photos/seed/ig-insight-4/600/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group md:col-span-2">
+                    <img src="https://picsum.photos/seed/ig-insight-5/1200/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="instagram-grid-item relative aspect-square rounded-xl overflow-hidden group md:col-span-2">
+                    <img src="https://picsum.photos/seed/ig-insight-6/1200/600.jpg" alt="" class="w-full h-full object-cover transition-transform duration-500">
+                    <div class="ig-overlay absolute inset-0 bg-stone-900/40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <i data-lucide="instagram" class="w-6 h-6 text-white"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="inline-block text-xs font-medium tracking-wider uppercase text-orange-700 mb-3">Testimoni</span>
+                <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-stone-900">Apa Kata Klien Kami</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-stone-50 rounded-2xl p-8 border border-stone-200/50">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-6">"Proses pembelian rumah sangat lancar. Tim Insight Homes sangat responsif dan membantu dari awal sampai akad. Sangat recommended!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium text-stone-600">RA</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-stone-900">Rina Andini</p>
+                            <p class="text-xs text-stone-400">Beli di Cluster The Green</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 rounded-2xl p-8 border border-stone-200/50">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-6">"Listing di Instagramnya informatif banget. Fotonya jelas, spesifikasinya lengkap. Gak perlu datang berkali-kali, cukup sekali survei langsung deal."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium text-stone-600">BP</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-stone-900">Budi Prasetyo</p>
+                            <p class="text-xs text-stone-400">Beli di Cluster De Park</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-stone-50 rounded-2xl p-8 border border-stone-200/50">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-orange-500 text-orange-500"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed mb-6">"Saya investasi properti lewat Insight Homes. Pilihannya bagus-bagus dan harganya kompetitif. Sudah 2x beli dan puas semua."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center">
+                            <span class="text-sm font-medium text-stone-600">DW</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-stone-900">Diana Wijaya</p>
+                            <p class="text-xs text-stone-400">Investor Properti BSD</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative bg-stone-900 rounded-3xl overflow-hidden">
+                <div class="absolute inset-0">
+                    <img src="https://picsum.photos/seed/insight-cta-bg/1400/600.jpg" alt="" class="w-full h-full object-cover opacity-30">
+                    <div class="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-900/90 to-stone-900/70"></div>
+                </div>
+                <div class="relative grid md:grid-cols-2 gap-12 p-10 md:p-16">
+                    <div>
+                        <span class="inline-block text-xs font-medium tracking-wider uppercase text-orange-400 mb-4">Hubungi Kami</span>
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white tracking-tight mb-4">Tertarik dengan Listing Kami?</h2>
+                        <p class="text-stone-400 leading-relaxed mb-8">Konsultasikan kebutuhan properti Anda secara gratis. Kami siap membantu menemukan rumah idaman di BSD City.</p>
+                        <div class="space-y-4">
+                            <a href="https://wa.me/6282125006251" target="_blank" class="flex items-center gap-4 text-stone-300 hover:text-white transition-colors group">
+                                <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">WhatsApp</p>
+                                    <p class="text-xs text-stone-500">+62 821-2500-6251</p>
+                                </div>
+                            </a>
+                            <a href="mailto:info@insighthomes.id" class="flex items-center gap-4 text-stone-300 hover:text-white transition-colors group">
+                                <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Email</p>
+                                    <p class="text-xs text-stone-500">info@insighthomes.id</p>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="flex items-center gap-4 text-stone-300 hover:text-white transition-colors group">
+                                <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">Instagram</p>
+                                    <p class="text-xs text-stone-500">@insighthomes.bsd</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contactForm" class="space-y-4" onsubmit="handleSubmit(event)">
+                            <div>
+                                <label class="block text-xs font-medium text-stone-400 mb-1.5">Nama Lengkap</label>
+                                <input type="text" required class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all" placeholder="Masukkan nama Anda">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-400 mb-1.5">Nomor WhatsApp</label>
+                                <input type="tel" required class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all" placeholder="08xx-xxxx-xxxx">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-400 mb-1.5">Budget (Opsional)</label>
+                                <select class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all appearance-none">
+                                    <option value="">Pilih range budget</option>
+                                    <option value="1">Di bawah Rp 1 Miliar</option>
+                                    <option value="2">Rp 1 - 2 Miliar</option>
+                                    <option value="3">Rp 2 - 5 Miliar</option>
+                                    <option value="4">Di atas Rp 5 Miliar</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-stone-400 mb-1.5">Pesan</label>
+                                <textarea rows="3" class="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all resize-none" placeholder="Tulis kebutuhan Anda..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-700 text-white text-sm font-medium py-3.5 rounded-xl hover:bg-orange-800 transition-colors duration-150 flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Kirim Pesan
+                            </button>
+                            <div id="formMessage" class="hidden text-center text-sm py-2 rounded-lg"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center">
+                            <i data-lucide="home" class="w-4 h-4 text-white" style="stroke-width:2.5"></i>
+                        </div>
+                        <span class="text-lg font-semibold tracking-tight text-white">Insight<span class="text-orange-400">Homes</span></span>
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-sm mb-6">Mitra properti terpercaya di BSD City. Kami membantu Anda menemukan hunian idaman dengan pendekatan profesional dan transparan.</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.instagram.com/insighthomes.bsd/" target="_blank" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://wa.me/6282125006251" target="_blank" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        </a>
+                        <a href="mailto:info@insighthomes.id" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors border border-white/5">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-4">Navigasi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#listings" class="text-sm hover:text-white transition-colors">Listing</a></li>
+                        <li><a href="#about" class="text-sm hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#gallery" class="text-sm hover:text-white transition-colors">Galeri</a></li>
+                        <li><a href="#contact" class="text-sm hover:text-white transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-4">Cluster Populer</h4>
+                    <ul class="space-y-3">
+                        <li><span class="text-sm">Vanya Park</span></li>
+                        <li><span class="text-sm">The Green</span></li>
+                        <li><span class="text-sm">De Park</span></li>
+                        <li><span class="text-sm">Foresta</span></li>
+                        <li><span class="text-sm">Casablanca</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-stone-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-xs text-stone-500">©2026 Insight Homes. All rights reserved.</p>
+                <p class="text-xs text-stone-600">BSD City, Tangerang Selatan, Banten</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Property Detail Modal -->
+    <div id="propertyModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative h-full flex items-center justify-center p-4 md:p-8">
+            <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+                <div class="relative">
+                    <img id="modalImage" src="" alt="" class="w-full aspect-[16/10] object-cover rounded-t-2xl">
+                    <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-md">
+                        <i data-lucide="x" class="w-5 h-5 text-stone-700"></i>
+                    </button>
+                    <div id="modalBadge" class="absolute top-4 left-4"></div>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-stone-400"></i>
+                        <p id="modalLocation" class="text-sm text-stone-500"></p>
+                    </div>
+                    <h3 id="modalTitle" class="text-2xl font-semibold text-stone-900 tracking-tight mb-2"></h3>
+                    <p id="modalCluster" class="text-sm text-orange-700 font-medium mb-6"></p>
+
+                    <div id="modalSpecs" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6"></div>
+
+                    <div id="modalDescription" class="text-sm text-stone-500 leading-relaxed mb-8"></div>
+
+                    <div class="flex items-center justify-between pt-6 border-t border-stone-100">
+                        <p id="modalPrice" class="text-2xl font-semibold text-stone-900"></p>
+                        <a id="modalWaLink" href="#" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-emerald-700 transition-colors duration-150">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            Tanya via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-50 w-12 h-12 bg-stone-900 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-stone-800 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Property Data
+        const properties = [
+            {
+                title: "Rumah Modern 2 Lantai",
+                cluster: "Cluster Vanya Park",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 2.1 M",
+                status: "sold",
+                image: "https://picsum.photos/seed/bsd-alam-sutra-1/800/600.jpg",
+                specs: { bed: "3+1 KT", bath: "2+1 KM", lb: "90 m²", lt: "84 m²" },
+                description: "Rumah modern 2 lantai di Cluster Vanya Park BSD. Desain kontemporer dengan taman depan dan belakang. Dilengkapi carport untuk 1 mobil. Akses dekat ke Vanya Park Mall, sekolah, dan rumah sakit. Lingkungan aman dengan keamanan 24 jam."
+            },
+            {
+                title: "Rumah Hook Semi Furnished",
+                cluster: "Cluster The Green",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 4.5 M",
+                status: "available",
+                image: "https://picsum.photos/seed/bsd-rumah-modern-2/800/600.jpg",
+                specs: { bed: "4+1 KT", bath: "3+1 KM", lb: "160 m²", lt: "200 m²" },
+                description: "Rumah hook premium di Cluster The Green BSD. Semi furnished dengan kitchen set, AC di setiap kamar, dan water heater. Taman luas dengan gazebo. Lokasi sangat strategis dekat The Green Marketplace dan akses tol."
+            },
+            {
+                title: "Rumah Baru Siap Huni",
+                cluster: "Cluster Casablanca",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 1.2 M",
+                status: "sold",
+                image: "https://picsum.photos/seed/bsd-cluster-3/800/600.jpg",
+                specs: { bed: "2 KT", bath: "1 KM", lb: "45 m²", lt: "60 m²" },
+                description: "Rumah baru siap huni di Cluster Casablanca BSD. Desain minimalis modern dengan plafon tinggi. Sudah termasuk taman depan dan carport. Cocok untuk keluarga muda atau investasi sewa. Dekat dengan fasilitas pendidikan dan komersial."
+            },
+            {
+                title: "Rumah Premium Full Renov",
+                cluster: "Cluster De Park",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 5.8 M",
+                status: "available",
+                image: "https://picsum.photos/seed/bsd-premium-house/800/600.jpg",
+                specs: { bed: "4 KT", bath: "3 KM", lb: "200 m²", lt: "180 m²" },
+                description: "Rumah premium full renovasi di Cluster De Park BSD. Material berkualitas tinggi, marmer flooring, smart home system. Kamar utama dengan walk-in closet dan bathtub. Taman belakang yang asri dengan kolam ikan. Carport 2 mobil + car garage 1 mobil."
+            },
+            {
+                title: "Rumah Minimalis 1 Lantai",
+                cluster: "Serpong Garden",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 850 Jt",
+                status: "available",
+                image: "https://picsum.photos/seed/bsd-minimalis-5/800/600.jpg",
+                specs: { bed: "2 KT", bath: "1 KM", lb: "36 m²", lt: "72 m²" },
+                description: "Rumah minimalis 1 lantai di kawasan Serpong Garden BSD. Harga terjangkau untuk ukuran BSD. Lingkungan sudah ramai dan berkembang. Dekat pasar modern, minimarket, dan angkutan umum. Ideal untuk first home buyer."
+            },
+            {
+                title: "Rumah Mewah 3 Lantai",
+                cluster: "Cluster Foresta",
+                location: "BSD City, Tangerang Selatan",
+                price: "Rp 9.5 M",
+                status: "sold",
+                image: "https://picsum.photos/seed/bsd-luxury-6/800/600.jpg",
+                specs: { bed: "5+1 KT", bath: "4+1 KM", lb: "350 m²", lt: "300 m²" },
+                description: "Rumah mewah 3 lantai di Cluster Foresta BSD. Dengan elevator pribadi, home theater room, dan rooftop garden. Material import, kitchen set premium, dan smart lighting system. Keamanan biometric dan CCTV 24 jam. Lingkungan eksklusif dan asri."
+            }
+        ];
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+
+            // Back to top button
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 600) {
+                btn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // Filter properties
+        function filterProperties(status) {
+            const cards = document.querySelectorAll('.property-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-stone-900', 'text-white', 'active-filter');
+                btn.classList.add('text-stone-600');
+            });
+
+            const activeBtn = document.querySelector(`[data-filter="${status}"]`);
+            activeBtn.classList.add('bg-stone-900', 'text-white', 'active-filter');
+            activeBtn.classList.remove('text-stone-600');
+
+            cards.forEach(card => {
+                const cardStatus = card.getAttribute('data-status');
+                if (status === 'all' || cardStatus === status) {
+                    card.style.display = '';
+                    card.style.animation = 'scaleIn 0.4s ease-out forwards';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle favorite
+        function toggleFavorite(btn) {
+            const icon = btn.querySelector('[data-lucide]');
+            const isFilled = btn.classList.contains('is-favorite');
+            if (isFilled) {
+                btn.classList.remove('is-favorite', 'bg-red-50');
+                btn.classList.add('bg-white/90');
+                icon.style.fill = 'none';
+                icon.style.color = '#a8a29e';
+            } else {
+                btn.classList.add('is-favorite', 'bg-red-50');
+                btn.classList.remove('bg-white/90');
+                icon.style.fill = '#ef4444';
+                icon.style.color = '#ef4444';
+
+                // Show toast
+                showToast('Ditambahkan ke favorit ❤️');
+            }
+            lucide.createIcons();
+        }
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 z-[200] bg-stone-900 text-white text-sm px-5 py-3 rounded-full shadow-xl animate-fade-in';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.3s';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // Modal functions
+        function openModal(index) {
+            const p = properties[index];
+            const modal = document.getElementById('propertyModal');
+
+            document.getElementById('modalImage').src = p.image;
+            document.getElementById('modalTitle').textContent = p.title;
+            document.getElementById('modalCluster').textContent = p.cluster;
+            document.getElementById('modalLocation').textContent = p.location;
+            document.getElementById('modalPrice').textContent = p.price;
+            document.getElementById('modalDescription').textContent = p.description;
+
+            // Badge
+            const badgeHtml = p.status === 'sold'
+                ? '<span class="badge-sold text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERJUAL</span>'
+                : '<span class="badge-available text-white text-xs font-medium px-3 py-1 rounded-full shadow-md">TERSEDIA</span>';
+            document.getElementById('modalBadge').innerHTML = badgeHtml;
+
+            // Specs
+            document.getElementById('modalSpecs').innerHTML = `
+                <div class="bg-stone-50 rounded-xl p-3 text-center">
+                    <i data-lucide="bed-double" class="w-5 h-5 mx-auto text-stone-400 mb-1"></i>
+                    <p class="text-sm font-medium text-stone-900">${p.specs.bed}</p>
+                </div>
+                <div class="bg-stone-50 rounded-xl p-3 text-center">
+                    <i data-lucide="bath" class="w-5 h-5 mx-auto text-stone-400 mb-1"></i>
+                    <p class="text-sm font-medium text-stone-900">${p.specs.bath}</p>
+                </div>
+                <div class="bg-stone-50 rounded-xl p-3 text-center">
+                    <i data-lucide="maximize" class="w-5 h-5 mx-auto text-stone-400 mb-1"></i>
+                    <p class="text-sm font-medium text-stone-900">LB ${p.specs.lb}</p>
+                </div>
+                <div class="bg-stone-50 rounded-xl p-3 text-center">
+                    <i data-lucide="layers" class="w-5 h-5 mx-auto text-stone-400 mb-1"></i>
+                    <p class="text-sm font-medium text-stone-900">LT ${p.specs.lt}</p>
+                </div>
+            `;
+
+            // WhatsApp link
+            const waMsg = encodeURIComponent(`Halo Insight Homes, saya tertarik dengan listing: ${p.title} - ${p.cluster} (${p.price})`);
+            document.getElementById('modalWaLink').href = `https://wa.me/6282125006251?text=${waMsg}`;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('propertyModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Form submit
+        function handleSubmit(e) {
+            e.preventDefault();
+            const msg = document.getElementById('formMessage');
+            msg.classList.remove('hidden');
+            msg.className = 'text-center text-sm py-2 rounded-lg bg-emerald-500/20 text-emerald-400';
+            msg.textContent = '✓ Pesan terkirim! Kami akan menghubungi Anda segera.';
+            e.target.reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.property-card').forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.animationDelay = `${i * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
