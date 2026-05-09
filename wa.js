@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Stop form dari reload
 
-            // Ambil data menggunakan ID atau urutan jika perlu
-            // Tapi paling aman pakai querySelector dari element form
             const inputs = contactForm.querySelectorAll('input, select, textarea');
             const nama = inputs[0].value;
             const whatsapp = inputs[1].value;
@@ -24,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Susun pesan
             let text = `Halo Insight Homes,\n\n`;
-            text += `Saya tertarik dengan unit di BSD City:\n`;
+            text += `Saya tertarik dengan unit yang ada di insight home\n`;
             text += `*Nama:* ${nama}\n`;
             text += `*No. WA:* ${whatsapp}\n`;
             text += `*Budget:* ${budgetText[budgetVal] || "Tidak disebutkan"}\n`;
             text += `*Pesan:* ${pesan}\n`;
 
             const encodedText = encodeURIComponent(text);
-            const phoneNumber = "6282125006251";
+            const phoneNumber = 628891257232"";
 
             // Redirect (Gunakan location.href jika window.open diblokir browser)
             window.location.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
