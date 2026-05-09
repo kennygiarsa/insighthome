@@ -1,43 +1,40 @@
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
-    if (!contactForm) {
-      console.error("Error: Could not find the form with ID 'contactForm'");
-      return;
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop form dari reload
+
+            // Ambil data menggunakan ID atau urutan jika perlu
+            // Tapi paling aman pakai querySelector dari element form
+            const inputs = contactForm.querySelectorAll('input, select, textarea');
+            const nama = inputs[0].value;
+            const whatsapp = inputs[1].value;
+            const budgetVal = inputs[2].value;
+            const pesan = inputs[3].value;
+
+            // Mapping budget
+            const budgetText = {
+                "": "Tidak disebutkan",
+                "1": "Di bawah Rp 1 Miliar",
+                "2": "Rp 1 - 2 Miliar",
+                "3": "Rp 2 - 5 Miliar",
+                "4": "Di atas Rp 5 Miliar"
+            };
+
+            // Susun pesan
+            let text = `Halo Insight Homes,\n\n`;
+            text += `Saya tertarik dengan unit di BSD City:\n`;
+            text += `*Nama:* ${nama}\n`;
+            text += `*No. WA:* ${whatsapp}\n`;
+            text += `*Budget:* ${budgetText[budgetVal] || "Tidak disebutkan"}\n`;
+            text += `*Pesan:* ${pesan}\n`;
+
+            const encodedText = encodeURIComponent(text);
+            const phoneNumber = "6282125006251";
+
+            // Redirect (Gunakan location.href jika window.open diblokir browser)
+            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+        });
     }
-
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      console.log("Form submitted!"); // Check your browser console for this
-
-      try {
-        const name = document.getElementById('formName').value;
-        const email = document.getElementById('formEmail').value;
-        const service = document.getElementById('formService').value || "General Inquiry";
-        const message = document.getElementById('formMessage').value;
-
-        const phoneNumber = "6287773336210"; 
-        
-        // Properly encode the text for a URL
-        const rawText = `Halo B Music Studio!\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${message}`;
-        const encodedText = encodeURIComponent(rawText);
-
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
-        
-        console.log("Redirecting to:", whatsappUrl);
-
-        // This is the action that opens WhatsApp
-        window.open(whatsappUrl, '_blank');
-        
-        // Show success UI
-        const successToast = document.getElementById('successToast');
-        if (successToast) successToast.classList.remove('hidden');
-        
-        contactForm.reset();
-      } catch (err) {
-        console.error("An error occurred during redirect:", err);
-      }
-    });
-  });
-</script>
+});
