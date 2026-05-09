@@ -1076,19 +1076,6 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // Form submit
-        function handleSubmit(e) {
-            e.preventDefault();
-            const msg = document.getElementById('formMessage');
-            msg.classList.remove('hidden');
-            msg.className = 'text-center text-sm py-2 rounded-lg bg-emerald-500/20 text-emerald-400';
-            msg.textContent = '✓ Pesan terkirim! Kami akan menghubungi Anda segera.';
-            e.target.reset();
-            setTimeout(() => {
-                msg.classList.add('hidden');
-            }, 4000);
-        }
-
         // Intersection Observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1105,5 +1092,6 @@
             observer.observe(card);
         });
     </script>
+    <script src="wa.js"></script>
 </body>
 </html>
