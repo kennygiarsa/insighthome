@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             text += `*Pesan:* ${pesan}\n`;
 
             const encodedText = encodeURIComponent(text);
-            const phoneNumber = 628891257232"";
+            const phoneNumber = "628891257232";
 
             // Redirect (Gunakan location.href jika window.open diblokir browser)
             window.location.href = `https://wa.me/${phoneNumber}?text=${encodedText}`;
